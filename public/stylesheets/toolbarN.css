@@ -1,0 +1,67 @@
+.toolbar-item, .toolbar-layer {
+  background-image: url("../images/toolbar.jpg");
+  background-repeat: no-repeat; }
+
+.toolbar {
+  position: fixed;
+  z-index: 20000;
+  right: 0;
+  bottom: 0px;
+  margin-right: 5px;
+  margin-bottom: 5px; }
+
+.toolbar-item {
+  position: relative;
+  z-index: 20000;
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin-top: 1px;
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  -ms-transition: background-position 1s;
+  -o-transition: background-position 1s;
+  transition: background-position 1s; }
+  .toolbar-item:hover .toolbar-layer {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    transform: scale(1); }
+
+.toolbar-item-weixin {
+  background-position: 0 -798px; }
+  .toolbar-item-weixin:hover {
+    background-position: 0 -860px; }
+  .toolbar-item-weixin .toolbar-layer {
+    height: 212px;
+    background-position: 0 0; }
+
+.toolbar-item-alipay {
+  background-position: 0 -550px; }
+  .toolbar-item-alipay:hover {
+    background-position: 0 -612px; }
+  .toolbar-item-alipay .toolbar-layer {
+    height: 194px;
+    background-position: 0 -222px; }
+
+.toolbar-item-top {
+  background-position: 0 -674px; }
+  .toolbar-item-top:hover {
+    background-position: 0 -736px; }
+
+.toolbar-layer {
+  position: absolute;
+  z-index: 20000;
+  right: 46px;
+  bottom: -10px;
+  width: 176px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: scale(0.01);
+  transform-origin: 95% 95%;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+/*# sourceMappingURL=toolbarN.css.map */

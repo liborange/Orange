@@ -1,0 +1,66 @@
+<%include head.ejs%>
+
+<link type="text/css" media="screen" charset="utf-8" rel="stylesheet" href="/stylesheets/fancymoves.css"
+      xmlns="http://www.w3.org/1999/html"/>
+
+
+<script type="text/javascript" src="/javascripts/slider.js"></script>
+<script type="text/javascript" src="/javascripts/popupLayer.js"></script>
+<script type="text/javascript" src="/javascripts/cloud-zoom.1.0.2.js"></script>
+<script type="text/javascript" src="/javascripts/scrollTop.js"></script>
+<script type="text/javascript" src="/javascripts/waterfull.js"></script>
+
+<!--<script type="text/javascript" src="/javascripts/jquery.mousewheel-3.0.4.pack.js"></script>-->
+<!--<script type="text/javascript" src="/javascripts/jquery.fancybox-1.3.4.pack.js"></script>-->
+<!--<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" media="screen" />-->
+
+<script>
+    $(document).ready(function () {
+        $('#waterfallpage').css('display','inline')
+        $('#index').css('display','none')
+        notice_show();
+    })
+    function notice_show()//显示
+    {
+        $('#main').css('opacity','0.3').attr('class','blur10 main');
+        var browser_visible_region_height=document.documentElement.clientHeight;//获取浏览器可见区域高度
+        var element_height=$(".PopupLayer").outerHeight();//获取元素高度:height+paelement_heighting+margin
+        //计算元素显示时的top值
+        var element_show_top=(browser_visible_region_height-element_height)/2;
+        $(".PopupLayer").stop(true).animate({top:element_show_top,opacity:1},1000);
+        //显示功能定义在cloud-zoom.js里面
+    }
+</script>
+
+<div id="main" class="main">
+
+</div>
+<div class="PopupLayer" style="background-color: transparent">
+    <a class="close"></a>
+
+
+    <div id="slider-one" style="opacity:1;">
+        <!--<h2>hello,world.</h2>-->
+        <p>我是知乎上的1001个姑娘</p>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;2015年的1111，一个<strong>剁手吃土单身是狗</strong>极容易产生强烈愧疚感的平常日子，·有态度·的人通常会寻找另一方面的满足感让自己有信心继续<strong>剩下</strong>的生活，于是这个页面产生了。
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;以前关注过知乎上的一个收藏<a href="http://www.zhihu.com/collection/26348030?page=1">《知乎上的1001个姑娘》</a>
+        ，我本只想看图片，奈何小主描述文字太多，要不断查看更多，不断滚动鼠标才能看到图，不爽！我就是要看图看到爽到不能更爽，直接到不能再直接（突出一个如饥似渴），
+            择一黄道吉日光棍佳节，幹！<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;本着<strong>看起图来简单暴力</strong>的基本原则，本页面有以下特点： </span></br>
+            <li>瀑布流式布局，一眼望去全是美腻皂片，动态加载，营造一波又一大波扑面而来的感觉~~~~~就这个feel、feel、feel</li>
+            <li>看不清？想近点看？鼠标移动到图片，局部放大暴露更多细节你敢信！试试你就信了</li>
+            <li>这还没完！点击图片！她的更多图片，滚滚而来，支持左右键切图..QoQoQoQoQ</li>
+            <li>查看更多图片时背景透明加眩晕，立体朦胧感氛围顿显，业界良心有木有</li>
+            <li>某伟人说，颜色是有灵魂的，灵魂是有颜色的。左侧边栏多种灵魂的味道任君选择</li>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;好了认真说，上面这些都是为了填补单身狗还剁手的愧疚感（不是空虚感）而胡扯的。图片展示还有很多不和谐的地方我都不好意思说，
+        如果感觉和我上面吹的不一样，建议刷新下页面，建议使用Chrome、Firefox等所谓的高端浏览器，建议电脑浏览。
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;第一次尝试前段编程，javascript、css还有各种前端工具相关知识是一顿恶补，重要的是第一次接触NodeJS、异步编程，再接再厉。
+           <br> &nbsp;&nbsp;&nbsp;&nbsp;<strong>可以关注屏幕右下角的微信公众号，尽量每个月都会做一个东西出来作为学习验收会在那里推送，也可以交流相关东西，多多关注啦。
+            右下角还有个支付宝链接，就当我什么都没说。</strong><br>
+            <br><strong style="text-align: center">学渣不逆袭，毕业回家卖红薯。竟然想着还能毕业？赶快写毕设吧，嘎。</strong>话不多说，<a id="close" style="background-color: #99FFCC">开始牛览</a>
+        </span>
+
+
+    </div>
+</div>
+<%include foot.ejs%>

@@ -1,0 +1,163 @@
+<html>
+<head>
+    <title>Thumb Wall</title>
+
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#f0f0f0 url(../images/bg.jpg) repeat top left;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:12px;
+            color: #555;
+        }
+        h1{
+            font-size:38px;
+            margin:10px;
+        }
+        h1 span{
+            font-size:20px;
+        }
+        .im_wrapper div{
+            left:-500px;
+            width:125px;
+            height:125px;
+            position:absolute;
+            background-repeat:no-repeat;
+            background-color:#fff;
+            cursor:pointer;
+            -moz-box-shadow:1px 1px 3px #000;
+            -webkit-box-shadow:1px 1px 3px #000;
+            box-shadow:1px 1px 3px #000;
+        }
+        .im_wrapper div img{
+            float:left;
+            width:115px;
+            height:115px;
+            margin:5px 0px 0px 5px;
+        }
+        .im_loading{
+            display:none;
+            position:fixed;
+            top:50%;
+            left:50%;
+            background:#fff url(../images/loader.gif) no-repeat center center;
+            width:70px;
+            height:70px;
+            z-index:9999;
+            -moz-border-radius:10px;
+            -webkit-border-radius:10px;
+            border-radius:10px;
+            -moz-box-shadow:1px 1px 3px #000;
+            -webkit-box-shadow:1px 1px 3px #000;
+            box-shadow:1px 1px 3px #000;
+            opacity:0.7;
+            filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+        }
+        .im_next,
+        .im_prev{
+            width:50px;
+            height:50px;
+            position:fixed;
+            bottom:50%;
+            margin-top:-25px;
+            cursor:pointer;
+            opacity:0.7;
+            z-index:1000;
+            -moz-box-shadow:0px 0px 3px #000;
+            -webkit-box-shadow:0px 0px 3px #000;
+            box-shadow:0px 0px 3px #000;
+            -moz-border-radius:2px;
+            -webkit-border-radius:2px;
+            border-radius:2px;
+            filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+        }
+        .im_next:hover,
+        .im_prev:hover
+        {
+            opacity:0.9;
+        }
+        .im_next{
+            background:#fff url(/images/next.png) no-repeat center center;
+            right:-50px; /*10 to show*/
+        }
+        .im_prev{
+            background:#fff url(/images/prev.png) no-repeat center center;
+            left:-50px; /*10 to show*/
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="im_wrapper" class="im_wrapper">
+
+</div>
+<div id="im_loading" class="im_loading"></div>
+<div id="im_next" class="im_next"></div>
+<div id="im_prev" class="im_prev"></div>
+
+<!-- The JavaScript -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+    (function($){
+        var imgjson = [{"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+            {"img_url":     "http://liborange.qiniudn.com/P41127-105311.jpg"},
+        ];
+        
+        var posX=0,posY=0;
+        var count = imgjson.length;
+        var cols = Math.floor(Math.sqrt(count));
+        console.log(count+'\t'+cols);
+        $.each(imgjson, function (i,item) {
+            posX = (i%cols)*-125;
+            posY = (Math.floor(i/cols))*-125;
+            //console.log(count+'\t'+cols+'\tNO.'+i+'\tpos:'+posX+'\t'+posY);
+            addImgDiv(item.img_url,posX,posY);
+        })
+
+    })(jQuery)
+
+    function addImgDiv(src,posX,posY){
+        var wrapper = $('.im_wrapper');
+        var div = $('<div>').css('background-position',posX+'px '+posY+'px').appendTo($(wrapper));
+        $('<img>').attr('src',src).appendTo($(div));
+    }
+</script>
+<script type="text/javascript">
+
+    (function($,sr){
+
+        var debounce = function (func, threshold, execAsap) {
+            var timeout;
+            return function debounced () {
+                var obj = this, args = arguments;
+                function delayed () {
+                    if (!execAsap)
+                        func.apply(obj, args);
+                    timeout = null;
+                };
+                if (timeout)
+                    clearTimeout(timeout);
+                else if (execAsap)
+                    func.apply(obj, args);
+                timeout = setTimeout(delayed, threshold || 100);
+            };
+        }
+
+        jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+    })(jQuery,'smartresize');
+</script>
+<script type="text/javascript" src="/javascripts/imgSeperateCombine.js"></script>
+
+</body>
+</html>
